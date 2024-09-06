@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Game</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+  <div id="game-container">
+    <h1>Multiplication Game</h1>
+    <div id="problem"></div>
+    <div id="result"></div>
+    <div id="scoreboard"></div>
+    <div id="highestscore"></div>
+    <button id="start">Start Game</button>
+    <button id="restart" style="display: none;">Restart Game</button>
+  </div>
+
+  <div id="gift-animation" class="hidden">
+    <img src="https://i.pinimg.com/originals/31/56/f2/3156f2d2549941984d08aa35eeaa59e9.gif" alt="Gift Hampers">
+  </div>
+
+  <script src="game.js"></script>
+  <script>
+    // JavaScript to add floating symbols
+    document.addEventListener("DOMContentLoaded", function () {
+      const gameContainer = document.getElementById('game-container');
+      const symbolsCount = 100; // Number of floating symbols
+      const symbols = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ*+-/='; // Symbols to float
+
+      for (let i = 0; i < symbolsCount; i++) {
+        const symbolElement = document.createElement('div');
+        symbolElement.classList.add('symbol');
+        symbolElement.style.left = Math.random() * 100 + 'vw';
+        symbolElement.style.animationDuration = Math.random() * 5 + 5 + 's';
+        symbolElement.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        gameContainer.appendChild(symbolElement);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Proverb Game</title>
+    <style>
+        body.tamil-proverb-game {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://media.istockphoto.com/id/1395536415/vector/colorful-vector-background-made-from-tamil-alphabets-scripts-letters-or-characters-in-flat.jpg?s=612x612&w=0&k=20&c=Hyzuk82z6BML_1zKoDTvobfmtaakVd6qHcXnDi3ueRg='); /* Replace 'your-image-url.jpg' with the actual URL or path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center; /* Centers the background image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tamil-proverb-game .container {
+            background-color: #ffffff;
+            border-radius: 12px; /* Slightly increased border radius for a softer look */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Increased shadow for a more pronounced effect */
+            padding: 30px 40px; /* More padding for better spacing */
+            text-align: center;
+            max-width: 550px; /* Slightly wider for better readability */
+            width: 100%;
+        }
+
+        .tamil-proverb-game h1 {
+            color: #2c3e50;
+            font-size: 28px; /* Slightly larger font size */
+            margin-bottom: 30px; /* Increased margin for better spacing */
+            font-weight: 700;
+        }
+
+        .tamil-proverb-game #proverb-container {
+            background-color: #ecf0f1;
+            border-radius: 8px; /* More rounded corners */
+            padding: 20px; /* More padding for better spacing */
+            margin-bottom: 30px; /* Increased margin */
+        }
+
+        .tamil-proverb-game #proverb {
+            font-size: 22px; /* Slightly larger font size */
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        .tamil-proverb-game button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 14px 24px; /* More padding for better appearance */
+            font-size: 18px; /* Slightly larger font size */
+            cursor: pointer;
+            margin: 10px; /* Increased margin for more spacing */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Added subtle transform effect */
+        }
+
+        .tamil-proverb-game button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .tamil-proverb-game button:hover:not(:disabled) {
+            background-color: #1c638d;
+            transform: translateY(-2px); /* Subtle hover effect */
+        }
+
+        .tamil-proverb-game #result {
+            font-size: 20px; /* Slightly larger font size */
+            color: #2980b9;
+            margin-top: 25px; /* Increased margin */
+            font-weight: 500;
+        }
+
+        .tamil-proverb-game .options-container {
+            margin-top: 25px; /* Increased top margin for more spacing */
+        }
+
+        .tamil-proverb-game .option {
+            display: block; /* Changed to block to make each option full width */
+            margin: 10px auto; /* Increased margin for more spacing between options */
+            background-color: #3498db;
+            color: white;
+            padding: 12px 18px; /* More padding for better appearance */
+            border: none;
+            border-radius: 8px; /* More rounded corners for a modern look */
+            cursor: pointer;
+            max-width: 80%; /* Set max-width to keep options contained */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Added subtle transform effect */
+        }
+
+        .tamil-proverb-game .option:hover {
+            background-color: #2c7fbd;
+            transform: translateY(-2px); /* Subtle hover effect */
+        }
+
+        @media only screen and (max-width: 480px) {
+            .tamil-proverb-game .container {
+                padding: 20px 25px;
+            }
+
+            .tamil-proverb-game h1 {
+                font-size: 24px; /* Increased for mobile readability */
+            }
+
+            .tamil-proverb-game #proverb {
+                font-size: 20px; /* Increased for mobile readability */
+            }
+
+            .tamil-proverb-game button {
+                font-size: 16px;
+                padding: 12px 20px; /* Adjusted padding for mobile */
+            }
+
+            .tamil-proverb-game #result {
+                font-size: 18px; /* Increased for better readability */
+            }
+
+            .tamil-proverb-game .option {
+                padding: 12px 16px; /* Adjusted padding for mobile */
+                font-size: 16px; /* Increased font size for better readability */
+            }
+        }
+    </style>
+</head>
+<body class="tamil-proverb-game">
+    <div class="container">
+        <h1>தமிழ் பழமொழி விளையாட்டு</h1>
+        <div id="proverb-container">
+            <p id="proverb"></p>
+        </div>
+        <div class="options-container" id="options-container">
+            <!-- Options will be generated here -->
+        </div>
+        <button id="start-btn">தொடங்கு</button>
+        <p id="result"></p>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const proverbs = [
+            { proverb: "கேட்டறிந்து __ செய்தால் வெற்றி உறுதி.", missingWord: "தெரிந்து", options: ["தெரிந்து", "கண்டு", "பரிசீலித்து"] },
+            { proverb: "கற்றது கையளவு, __ கடலளவு.", missingWord: "கல்லாதது", options: ["கல்லாதது", "கடந்து", "நிரந்தரம்"] },
+            { proverb: "நன்றி __ உள்ளதோ அதுவே அறம்.", missingWord: "மிக்க", options: ["மிக்க", "வெள்ளை", "தூய"] },
+            { proverb: "ஓட்டம் பிடிக்காத வேந்தன் __ பிடிக்கும்.", missingWord: "கொட்டம்", options: ["கொட்டம்", "அளவிடம்", "கோட்டம்"] },
+            { proverb: "பந்திக்கு முந்து, __ பிந்து", missingWord: "படைக்கு", options: ["படைக்கு", "புதுமை", "அடுக்கு"] },
+            // Add more proverbs with their options here
+        ];
+
+        let currentProverb = {};
+        let attempts = 0;
+        let score = 0;
+        let isFirstAttempt = true;
+
+        const proverbElement = document.getElementById('proverb');
+        const startBtn = document.getElementById('start-btn');
+        const resultElement = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+        const optionsContainer = document.getElementById('options-container');
+
+        startBtn.addEventListener('click', startGame);
+
+        function startGame() {
+            startBtn.style.display = 'none'; // Hide the start button
+            attempts = 0;
+            isFirstAttempt = true; // Reset attempt flag for new game
+            const randomIndex = Math.floor(Math.random() * proverbs.length);
+            currentProverb = proverbs[randomIndex];
+            proverbElement.textContent = currentProverb.proverb.replace("__", "...");
+            generateOptions(currentProverb.options);
+            speakProverb(currentProverb.proverb.replace("__", "..."), currentProverb.options);
+            resultElement.textContent = "";
+            updateScore();
+        }
+
+        function speakProverb(proverb, options) {
+            const speech = new SpeechSynthesisUtterance();
+            speech.lang = 'ta-IN'; 
+            speech.text = proverb;
+
+            const voices = window.speechSynthesis.getVoices();
+            speech.voice = voices.find(voice => voice.lang.startsWith('ta')) || voices[0];
+
+            speech.onend = function() {
+                console.log("Proverb spoken successfully.");
+                // Automatically trigger reading options aloud after proverb
+                setTimeout(() => {
+                    speakOptions(options);
+                }, 1000); // 2-second delay before starting to read options
+            };
+
+            speech.onerror = function(event) {
+                console.error("Error occurred in speech synthesis: ", event.error);
+            };
+
+            setTimeout(() => {
+                window.speechSynthesis.speak(speech);
+            }, 1000);
+        }
+
+        function speakOptions(options) {
+            const optionsText = options.join(", ");
+            const speech = new SpeechSynthesisUtterance();
+            speech.lang = 'ta-IN'; 
+            speech.text = `பதில்கள்: ${optionsText}`;
+            window.speechSynthesis.speak(speech);
+
+            // Start speech recognition after options are spoken
+            setTimeout(() => {
+                recognizeSpeech();
+            }, 3000); // 2-second delay before starting speech recognition
+        }
+
+        function generateOptions(options) {
+            optionsContainer.innerHTML = '';
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.classList.add('option');
+                button.textContent = option;
+                button.addEventListener('click', () => checkAnswer(option));
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function recognizeSpeech() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'ta-IN'; 
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const spokenOption = event.results[0][0].transcript;
+                checkAnswer(spokenOption);
+            };
+
+            recognition.onerror = function(event) {
+                resultElement.textContent = "முயற்சிக்கவும்!";
+                setTimeout(() => {
+                    recognizeSpeech(); // Restart recognition on error
+                }, 2000); // 2-second delay before restarting recognition
+            };
+
+            recognition.onend = function() {
+                // Optionally handle recognition end if needed
+            };
+        }
+
+        function checkAnswer(selectedOption) {
+            if (selectedOption.trim() === currentProverb.missingWord) {
+                resultElement.textContent = "சரியான பதில்! " + currentProverb.proverb.replace("__", selectedOption);
+                speakProverb("சரியான பதில்!");
+                score++;
+                setTimeout(() => nextProverb(true), 3000); // Call nextProverb after 2 seconds
+            } else {
+                attempts++;
+                if (attempts === 1 && isFirstAttempt) {
+                    resultElement.textContent = "பிழையான பதில். மறு முயற்சி செய்க!";
+                    speakProverb("பிழையான பதில். மறு முயற்சி செய்க!");
+                    isFirstAttempt = false; // Set to false to indicate second attempt
+                    setTimeout(() => {
+                        // Read the proverb and options again for the second attempt
+                        proverbElement.textContent = currentProverb.proverb.replace("__", "...");
+                        speakProverb(currentProverb.proverb.replace("__", "..."), currentProverb.options);
+                    }, 2000); // 2-second delay before repeating
+                } else {
+                    resultElement.textContent = "பிழையான பதில். புதிய பழமொழி!";
+                    speakProverb("பிழையான பதில். புதிய பழமொழி!");
+                    nextProverb(false);
+                }
+            }
+        }
+
+        function nextProverb(correctFirstAttempt) {
+            attempts = 0;
+            isFirstAttempt = true; // Reset attempt flag for new proverb
+            if (correctFirstAttempt) {
+                startGame();
+            } else {
+                setTimeout(startGame, 2000); // Wait for 2 seconds before starting the next proverb if not answered correctly on first attempt
+            }
+        }
+
+        function updateScore() {
+            scoreElement.textContent = "மொத்த மதிப்பெண்: " + score;
+        }
+    </script>
+</body>
+</html>

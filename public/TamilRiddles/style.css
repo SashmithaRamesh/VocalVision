@@ -1,0 +1,55 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* Light blue background for a calming effect */
+    color: #333; /* Dark text for contrast */
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: #ffffff; /* White background for content clarity */
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for a card effect */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em; /* Larger font size for the heading */
+    color: #007bff; /* Blue color for heading */
+    margin-bottom: 20px; /* Space below the heading */
+    text-shadow: 2px 2px #c0c0c0; /* Subtle shadow for heading */
+}
+
+#message {
+    font-size: 1.2em; /* Slightly larger font for messages */
+    margin-bottom: 20px; /* Space below the message */
+    line-height: 1.5; /* Improved readability */
+}
+
+button {
+    background-color: #007bff; /* Blue button color */
+    color: #ffffff; /* White text for contrast */
+    border: none;
+    padding: 15px 30px; /* Larger padding for easier clicking */
+    font-size: 1em; /* Standard font size for buttons */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
+}

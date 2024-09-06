@@ -1,0 +1,164 @@
+/* Styles for the multiplication game */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://img.freepik.com/free-vector/gradient-numerology-background_23-2150066816.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s;
+}
+
+#game-container {
+    background: #abd8de;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeInUp 1s;
+    position: relative; /* For containing the floating numbers */
+}
+
+#problem, #result, #scoreboard, #highestscore {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    animation: fadeIn 2s;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+#gift-animation {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset by half its width and height */
+    width: 100px;
+    height: 100px;
+    z-index: 1000;
+    animation: giftAnimation 2s ease-in-out;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes giftAnimation {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating symbols animation */
+@keyframes float {
+    0% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.symbol {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.1);
+    animation: float 10s linear infinite;
+    pointer-events: none; /* Prevent symbols from interfering with interactions */
+}
+
+@media (max-width: 600px) {
+    #game-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #problem, #result, #scoreboard, #highestscore {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+}
