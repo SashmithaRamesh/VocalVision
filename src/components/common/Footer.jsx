@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='footer-content text-white d-grid container'>
           <div className='footer-item'>
             <a href="#" className='navbar-brand text-white text-uppercase no-wrap d-block'>
-              cool <span>games</span>
+              vocal <span>vision</span>
             </a>
             <p className='para-text'>Lorem ipsum dolor sitamt consectue adispicing duis soolici tudin ague suisomid. Nulla vullam dolor.</p>
           </div>

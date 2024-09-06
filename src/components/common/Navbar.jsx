@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className='container w-100'>
         <div className='navbar-content'>
           <div className='brand-and-toggler d-flex align-items-center justify-content-between'>
-            <Link to = "/" className="navbar-brand text-white text-uppercase no-wrap">cool <span>games</span></Link>
+            <Link to = "/" className="navbar-brand text-white text-uppercase no-wrap">vocal <span>vision</span></Link>
             <button type='button' className='navbar-show-btn text-white' onClick={() => dispatch(setSidebarOn())}>
               <HiOutlineMenuAlt3 size = { 25 } />
             </button>

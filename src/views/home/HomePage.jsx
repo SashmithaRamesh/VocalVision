@@ -59,21 +59,6 @@ const HomePage = () => {
     <HomeWrapper>
       <Banner />
 
-      <section className="section sc-popular">
-        <div className="container">
-          <Title
-            titleName={{ firstText: "top popular", secondText: "games" }}
-          />
-          {gamesStatus === STATUS.LOADING ? (
-            <Preloader />
-          ) : games?.length > 0 ? (
-            renderedPopularGames
-          ) : (
-            "No games found!"
-          )}
-        </div>
-      </section>
-
       <ImageSlider />
 
       <section
@@ -96,47 +81,6 @@ const HomePage = () => {
               join discord
             </button>
           </div>
-        </div>
-      </section>
-
-      <section className="section sc-genres">
-        <div className="container">
-          <Title
-            titleName={{
-              firstText: "top",
-              secondText: "genres",
-            }}
-          />
-        </div>
-        {genresStatus === STATUS.LOADING ? (
-          <Preloader />
-        ) : genres?.length > 0 ? (
-          <Tabs sliceValue={9} data={genres} />
-        ) : (
-          "No genres found!"
-        )}
-      </section>
-
-      <section
-        className="section sc-stores"
-        style={{
-          background: `linear-gradient(180deg, rgba(12, 10, 36, 0.73) 0%, rgba(0, 0, 0, 0.73) 72.92%), url(${store_image}) center/cover no-repeat`,
-        }}
-      >
-        <div className="container">
-          <Title
-            titleName={{
-              firstText: "our",
-              secondText: "game stores",
-            }}
-          />
-          {storesStatus === STATUS.LOADING ? (
-            <Preloader />
-          ) : stores?.length > 0 ? (
-            <StoreList stores={stores} />
-          ) : (
-            "No stores found!"
-          )}
         </div>
       </section>
     </HomeWrapper>
