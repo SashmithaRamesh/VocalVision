@@ -1,0 +1,103 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url("https://i.pinimg.com/736x/b9/ec/98/b9ec98be9295ec71c409334e5102adea.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin-top: 150px;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Typography */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #00796b;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+#questionText {
+    font-weight: bold;
+    color: #004d40;
+    margin-bottom: 15px;
+}
+
+#optionsText {
+    margin-bottom: 25px;
+    color: #004d40;
+}
+
+/* Buttons */
+button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #00251a;
+}
+
+/* Score Display */
+#score {
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #388e3c;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}

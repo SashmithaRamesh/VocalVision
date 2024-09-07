@@ -1,6 +1,9 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f8ff; /* Light blue background for a calming effect */
+    background-image: url("https://img.freepik.com/free-psd/3d-rendering-questions-background_23-2151455632.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725408000&semt=ais_hybrid");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #333; /* Dark text for contrast */
     text-align: center;
     padding: 50px;
