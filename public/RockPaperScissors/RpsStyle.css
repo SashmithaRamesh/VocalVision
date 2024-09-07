@@ -13,10 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url('https://c4.wallpaperflare.com/wallpaper/674/457/195/hands-minimalistic-paper-rock-wallpaper-preview.jpg');
-  /* background: #adaeb0; */
+  background: #f6f7fb;
   font-size: 16px; /* Base font size */
 }
 
@@ -26,10 +23,10 @@ body {
 }
 
 .container {
-  padding: 8rem 10rem; /* Increased padding */
+  padding: 3rem 8rem; /* Increased padding */
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 5px 10px #000000fe;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .result_images {
@@ -60,7 +57,7 @@ body {
 }
 
 .result_images img {
-  width: 180px; /* Increased image size */
+  width: 120px; /* Increased image size */
 }
 
 .user_result img {
@@ -116,7 +113,7 @@ body {
 
 .option_image p {
   color: #7d2ae8;
-  font-size: 2rem; /* Increased font size */
-  margin-top: 3rem; /* Increased margin */
+  font-size: 1.5rem; /* Increased font size */
+  margin-top: 1.5rem; /* Increased margin */
   pointer-events: none;
 }
