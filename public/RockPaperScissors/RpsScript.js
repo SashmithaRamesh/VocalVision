@@ -39,7 +39,7 @@ function playSound(choice) {
 }
 
 function playGame(userChoice) {
-  userResult.src = cpuResult.src = "imagesrps/rock.png";
+  userResult.src = cpuResult.src = "imagesrps/rock.jpeg";
   result.textContent = "Wait...";
 
   gameContainer.classList.add("start");
@@ -48,12 +48,12 @@ function playGame(userChoice) {
     gameContainer.classList.remove("start");
 
     // Set user image
-    userResult.src = `imagesrps/${userChoice}.png`;
+    userResult.src = `imagesrps/${userChoice}.jpeg`;
 
     // Random CPU choice
     const choices = ['rock', 'paper', 'scissors'];
     const cpuChoice = choices[Math.floor(Math.random() * choices.length)];
-    cpuResult.src = `imagesrps/${cpuChoice}.png`;
+    cpuResult.src = `imagesrps/${cpuChoice}.jpeg`;
 
     // Determine winner
     const outcomes = {
