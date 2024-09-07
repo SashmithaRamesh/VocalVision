@@ -20,7 +20,7 @@ const GameCard = ({ title, description, backgroundImage, route }) => {
 export default GameCard;
 
 const CardWrapper = styled.div`
-    width: 400px;
+    width: 490px;
     height: 250px;
     margin: 20px;
     border-radius: 12px;
@@ -49,13 +49,12 @@ const CardWrapper = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
         border-radius: 12px;
         transition: background 0.4s ease;
     }
 
     &:hover::after {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.2);
     }
 `;
 
