@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart');
 const scoreBoardElement = document.getElementById('scoreboard');
 const highestScoreElement = document.getElementById('highestscore');
 const hampersElement = document.getElementById('gift-animation');
+const pointGainSound = document.getElementById('point-gain-sound');
 const userId = 5; // Placeholder user ID for demonstration; replace with actual ID from localStorage
 
 let num1, num2, correctAnswer;
@@ -125,6 +126,7 @@ function updateScoreBoard() {
         highestScoreElement.innerText = `Highest Score: ${highestScore}`;
         localStorage.setItem('highestScore', highestScore); // Save the highest score to local storage
         triggerHampersAnimation(); // Trigger the hampers animation
+        pointGainSound.play();
         saveHighestScore(); // Save the new highest score
     }
 }
