@@ -306,8 +306,8 @@
             if (selectedOption.trim() === currentProverb.missingWord) {
                 resultElement.textContent = "சரியான பதில்! " + currentProverb.proverb.replace("__", selectedOption);
                 speakProverb("சரியான பதில்!");
-                pointGainSound.play();
                 score++;
+                pointGainSound.play();
                 setTimeout(() => nextProverb(true), 3000); // Call nextProverb after 3 seconds
             } else {
                 attempts++;

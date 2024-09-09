@@ -2,6 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GameCard = ({ title, description, backgroundImage, route }) => {
+    // Function to speak the title and description when hovered
+    const handleMouseEnter = () => {
+        const speechMessage = new SpeechSynthesisUtterance(`${title}. ${description}`);
+        speechMessage.rate = 1; // Adjust the rate as needed
+        window.speechSynthesis.speak(speechMessage);
+    };
+
+    // Function to stop speaking when the mouse leaves the card
+    const handleMouseLeave = () => {
+        window.speechSynthesis.cancel();
+    };
 
     const handleCardClick = () => {
         window.location.href = route;
@@ -11,8 +22,13 @@ const GameCard = ({ title, description, backgroundImage, route }) => {
         <CardWrapper
             style={{ backgroundImage: `url(${backgroundImage})` }}
             onClick={handleCardClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
-            
+            <ContentWrapper>
+                <h3>{title}</h3>
+                <p>{description}</p>
+            </ContentWrapper>
         </CardWrapper>
     );
 };
