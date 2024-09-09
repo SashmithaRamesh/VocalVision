@@ -8,6 +8,8 @@ const inputs = document.querySelector(".inputs"),
     scoreDisplay = document.getElementById('score-display'),
     highestScoreDisplay = document.getElementById('highest-score-display');
 
+const pointGainSound = document.getElementById('point-gain-sound');
+
 let word, maxGuesses, incorrectLetters = [], correctLetters = [], score = 0, highestScore = 0;
 const userId = 5; // Replace with the actual user ID from your authentication system
 
@@ -112,6 +114,7 @@ function initGame(key) {
         if (correctLetters.length === word.length) {
             score += maxGuesses; // Update score
             speak(`Congrats! You found the word ${word.toUpperCase()}.`);
+            pointGainSound.play();
             updateScore(); // Update score on the server
             setTimeout(randomWord, 2000); // Small delay before starting a new word
         } else if (maxGuesses < 1) {

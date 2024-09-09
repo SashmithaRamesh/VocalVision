@@ -16,7 +16,7 @@ let wordList = [
         hint: "planet of our solar system"
     },
     {
-        word: "gold",
+        word: "gold",   
         hint: "a yellow precious metal"
     },
     {
