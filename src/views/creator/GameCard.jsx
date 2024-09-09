@@ -5,7 +5,8 @@ const GameCard = ({ title, description, backgroundImage, route }) => {
     // Function to speak the title and description when hovered
     const handleMouseEnter = () => {
         const speechMessage = new SpeechSynthesisUtterance(`${title}. ${description}`);
-        speechMessage.rate = 1; // Adjust the rate as needed
+        speechMessage.lang = 'en-IN';  // Set to Indian English
+        speechMessage.rate = 1;  // Adjust the rate as needed
         window.speechSynthesis.speak(speechMessage);
     };
 

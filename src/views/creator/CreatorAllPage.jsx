@@ -11,7 +11,7 @@ const backgroundImages = [
     {
         url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScDuoOQeRx2aqKsSKu56WTgzAA71CVEpThSROKtsLs0imU5m5cXqLeev-PolGBPYUb7Vc&usqp=CAU',
         route: '/Palamolzhi/palamolzhi.html',
-        title: 'Palamolzhi Game',
+        title: 'Tamil Palamozhi Game',
         description: 'A fun game to guess Tamil proverbs.'
     },
     {
