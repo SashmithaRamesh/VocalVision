@@ -81,7 +81,7 @@ const ContentWrapper = styled.div`
     z-index: 1;
     color: #fff;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     width: 80%;
     bottom: 20px;
