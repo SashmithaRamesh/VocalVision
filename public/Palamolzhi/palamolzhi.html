@@ -128,6 +128,7 @@
             }
         }
     </style>
+
 </head>
 <body class="tamil-proverb-game">
     <div class="container">
@@ -141,6 +142,7 @@
         <button id="start-btn">தொடங்கு</button>
         <p id="result"></p>
         <p id="score"></p>
+        <audio id="point-gain-sound" src="collect-points-190037.mp3"></audio>
     </div>
 
     <script>
@@ -150,22 +152,68 @@
             { proverb: "நன்றி __ உள்ளதோ அதுவே அறம்.", missingWord: "மிக்க", options: ["மிக்க", "வெள்ளை", "தூய"] },
             { proverb: "ஓட்டம் பிடிக்காத வேந்தன் __ பிடிக்கும்.", missingWord: "கொட்டம்", options: ["கொட்டம்", "அளவிடம்", "கோட்டம்"] },
             { proverb: "பந்திக்கு முந்து, __ பிந்து", missingWord: "படைக்கு", options: ["படைக்கு", "புதுமை", "அடுக்கு"] },
-            // Add more proverbs with their options here
+            { proverb: "சோறு கண்ட இடம் __.", missingWord: "சொர்க்கம்", options: ["சொர்க்கம்", "நரகம்", "பரவசம்"] },
+            { proverb: "ஐந்து பெற்றால் __ ஆண்டி", missingWord: "அரசனும்", options: ["அரசனும்", "அடியும்", "பாண்டியும்"] },
+            { proverb: "__ மாட்டிற்கு ஒரு சூடு", missingWord: "நல்ல", options: ["நல்ல", "பெரிய", "சின்ன"] },
+            { proverb: "கழுதைக்கு தெரியுமா __ வாசனை.", missingWord: "கற்பூர", options: ["கற்பூர", "மல்லிகை", "சந்தனம்"] },
+            { proverb: "நண்டு __ வலையில் தங்காது.", missingWord: "கொழுத்தால்", options: ["கொழுத்தால்", "பருத்தால்", "வெகுவாக"] },
+            { proverb: "__ உதவுவது போல் அண்ணன் தம்பி உதவமாட்டான்", missingWord: "அடி", options: ["அடி", "பரப்பு", "கல்"] },
+            { proverb: "ஆயிரம் பேரை கொன்றவன் __ ஆவான்.", missingWord: "அரைவைத்தியன்", options: ["அரைவைத்தியன்", "மூவைத்தியன்", "நல்வைத்தியன்"] },
+            { proverb: "__ நம்பி புருஷனை கைவிட்டது போல", missingWord: "அரசனை", options: ["அரசனை", "அரக்கனை", "அண்ணனைக்"] },
+            { proverb: "__ வீரன் ஆயுதத்தின் மீது குறை சொல்வான்", missingWord: "கோழையான", options: ["கோழையான", "துணிவான", "பயமின்றி"] },
+            { proverb: "கடுகு சிறுத்தாலும் __ போகுமா?", missingWord: "காரம்", options: ["காரம்", "கையளவு", "நட்பு"] },
+            { proverb: "துணை போனாலும் __ போகாதே", missingWord: "பிணை", options: ["பிணை", "கதவு", "மரணம்"] },
+            { proverb: "தழைத்த __ நிழல் உண்டு", missingWord: "மரத்திற்கு", options: ["மரத்திற்கு", "மலருக்கு", "காடு"] },
+            { proverb: "சேர இருந்தால் செடியும் __", missingWord: "பகை", options: ["பகை", "கீரை", "மழை"] },
+            { proverb: "__ வளைய வரும் எருதுகள் போல", missingWord: "செக்கை", options: ["செக்கை", "நிர்வாகி", "வேங்கை"] },
+            { proverb: "இட்டு கெட்டாருமில்லை ஈயாமல் __", missingWord: "வாழ்ந்தாருமில்லை", options: ["வாழ்ந்தாருமில்லை", "நிம்மதியில்லை", "மலர்வதில்லை"] },
+            { proverb: "ஆசை இருக்கு தாசில் பண்ண, அதிர்ஷ்டம் இருக்கு __ மேய்க்க", missingWord: "கழுதை", options: ["கழுதை", "காட்டு", "அந்தி"] },
+            { proverb: "உயர உயர பறந்தாலும் __ பருந்தாகாது", missingWord: "ஊர்க்குருவி", options: ["ஊர்க்குருவி", "காக்கா", "பொலிஸ்"] },
+            { proverb: "இருகினால் களி இளகினால் __", missingWord: "கூழ்", options: ["கூழ்", "காதல்", "துணை"] },
+            { proverb: "ஆவதும் பெண்ணாலே __ பெண்ணாலே.", missingWord: "அழிவதும்", options: ["அழிவதும்", "வாழ்வதும்", "பகை"] },
+            { proverb: "அப்பன் அருமை செத்தால் தெரியும்", missingWord: "", options: ["வாழ்வில்", "பிறப்பில்", "மரணத்தில்"] },
+            { proverb: "அடாது செய்தவன் __ படுவான்", missingWord: "படாது", options: ["படாது", "படிப்பது", "தோற்பது"] },
+            { proverb: "__ பெற்றாலும் மருத்துவச்சிக் கூலி தப்பாது.", missingWord: "சாப்பிள்ளை", options: ["சாப்பிள்ளை", "பிள்ளை", "நெஞ்சம்"] },
+            { proverb: "பணம் பந்தியிலே குணம் __", missingWord: "குப்பையிலே", options: ["குப்பையிலே", "வாங்கலே", "போகலே"] },
+            { proverb: "__ கண்டு தணலஞ்சுமா", missingWord: "சருகைக்", options: ["சருகைக்", "பழுதென்", "ஆகை"] },
+            { proverb: "ஏழைபேச்சு அம்பலம் __", missingWord: "ஏறாது", options: ["ஏறாது", "சிதறாது", "தணியாது"] },
+            { proverb: "கடுகத்தனை நெருப்பானாலும் __ கொளுத்திவிடும்", missingWord: "போரைக்", options: ["போரைக்", "தென்றலை", "மலையைக்"] },
+            { proverb: "__ அழுத கண்ணீர் கூரிய வாளை ஒக்கும்.", missingWord: "ஏழை", options: ["ஏழை", "புலி", "தீபம்"] },
+            { proverb: "ஆய்ந்து பாராதான் காரியந் தான் __ தரும்.", missingWord: "சாந்துயரந்", options: ["சாந்துயரந்", "நம்பிக்கை", "பயனில்லை"] },
+            { proverb: "__ பொன்னும் துரும்பு", missingWord: "ஊதாரிக்கு", options: ["ஊதாரிக்கு", "கனிவான", "வாயில்"] },
+            { proverb: "உறவு போகாமல் கெட்டது __ கேட்காமல் கெட்டது", missingWord: "கடன்", options: ["கடன்", "நாளை", "நட்சத்திரம்"] }
         ];
 
+    
         let currentProverb = {};
         let attempts = 0;
         let score = 0;
         let isFirstAttempt = true;
-
+    
         const proverbElement = document.getElementById('proverb');
         const startBtn = document.getElementById('start-btn');
         const resultElement = document.getElementById('result');
         const scoreElement = document.getElementById('score');
         const optionsContainer = document.getElementById('options-container');
-
+        const pointGainSound = document.getElementById('point-gain-sound');
+    
+        window.onload = function() {
+            speakWelcomeMessage(); // Speak the welcome message on page load
+        };
+    
+        function speakWelcomeMessage() {
+            const welcomeMessage = "தமிழ் பழமொழி விளையாட்டு";
+            const speech = new SpeechSynthesisUtterance(welcomeMessage);
+            speech.lang = 'ta-IN';
+    
+            const voices = window.speechSynthesis.getVoices();
+            speech.voice = voices.find(voice => voice.lang.startsWith('ta')) || voices[0];
+    
+            window.speechSynthesis.speak(speech);
+        }
+    
         startBtn.addEventListener('click', startGame);
-
+    
         function startGame() {
             startBtn.style.display = 'none'; // Hide the start button
             attempts = 0;
@@ -178,45 +226,43 @@
             resultElement.textContent = "";
             updateScore();
         }
-
+    
         function speakProverb(proverb, options) {
             const speech = new SpeechSynthesisUtterance();
             speech.lang = 'ta-IN'; 
             speech.text = proverb;
-
+    
             const voices = window.speechSynthesis.getVoices();
             speech.voice = voices.find(voice => voice.lang.startsWith('ta')) || voices[0];
-
+    
             speech.onend = function() {
                 console.log("Proverb spoken successfully.");
-                // Automatically trigger reading options aloud after proverb
                 setTimeout(() => {
                     speakOptions(options);
-                }, 1000); // 2-second delay before starting to read options
+                }, 1000); // 1-second delay before starting to read options
             };
-
+    
             speech.onerror = function(event) {
                 console.error("Error occurred in speech synthesis: ", event.error);
             };
-
+    
             setTimeout(() => {
                 window.speechSynthesis.speak(speech);
             }, 1000);
         }
-
+    
         function speakOptions(options) {
             const optionsText = options.join(", ");
             const speech = new SpeechSynthesisUtterance();
             speech.lang = 'ta-IN'; 
             speech.text = `பதில்கள்: ${optionsText}`;
             window.speechSynthesis.speak(speech);
-
-            // Start speech recognition after options are spoken
+    
             setTimeout(() => {
                 recognizeSpeech();
-            }, 3000); // 2-second delay before starting speech recognition
+            }, 3000); // 3-second delay before starting speech recognition
         }
-
+    
         function generateOptions(options) {
             optionsContainer.innerHTML = '';
             options.forEach(option => {
@@ -227,35 +273,42 @@
                 optionsContainer.appendChild(button);
             });
         }
-
+    
         function recognizeSpeech() {
             const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.lang = 'ta-IN'; 
+            recognition.continuous = true; // Continuous recognition
+            recognition.interimResults = false; // We want final results
+    
             recognition.start();
-
+    
             recognition.onresult = function(event) {
                 const spokenOption = event.results[0][0].transcript;
+                console.log("Recognized speech: ", spokenOption);
+                recognition.stop(); // Stop recognition after getting the result
                 checkAnswer(spokenOption);
             };
-
+    
             recognition.onerror = function(event) {
                 resultElement.textContent = "முயற்சிக்கவும்!";
+                console.error("Speech recognition error: ", event.error);
                 setTimeout(() => {
-                    recognizeSpeech(); // Restart recognition on error
+                    recognizeSpeech();
                 }, 2000); // 2-second delay before restarting recognition
             };
-
+    
             recognition.onend = function() {
-                // Optionally handle recognition end if needed
+                console.log("Recognition ended.");
             };
         }
-
+    
         function checkAnswer(selectedOption) {
             if (selectedOption.trim() === currentProverb.missingWord) {
                 resultElement.textContent = "சரியான பதில்! " + currentProverb.proverb.replace("__", selectedOption);
                 speakProverb("சரியான பதில்!");
+                pointGainSound.play();
                 score++;
-                setTimeout(() => nextProverb(true), 3000); // Call nextProverb after 2 seconds
+                setTimeout(() => nextProverb(true), 3000); // Call nextProverb after 3 seconds
             } else {
                 attempts++;
                 if (attempts === 1 && isFirstAttempt) {
@@ -263,7 +316,6 @@
                     speakProverb("பிழையான பதில். மறு முயற்சி செய்க!");
                     isFirstAttempt = false; // Set to false to indicate second attempt
                     setTimeout(() => {
-                        // Read the proverb and options again for the second attempt
                         proverbElement.textContent = currentProverb.proverb.replace("__", "...");
                         speakProverb(currentProverb.proverb.replace("__", "..."), currentProverb.options);
                     }, 2000); // 2-second delay before repeating
@@ -274,20 +326,21 @@
                 }
             }
         }
-
+    
         function nextProverb(correctFirstAttempt) {
             attempts = 0;
             isFirstAttempt = true; // Reset attempt flag for new proverb
             if (correctFirstAttempt) {
                 startGame();
             } else {
-                setTimeout(startGame, 2000); // Wait for 2 seconds before starting the next proverb if not answered correctly on first attempt
+                setTimeout(startGame, 2000); // Wait for 2 seconds before starting the next proverb
             }
         }
-
+    
         function updateScore() {
             scoreElement.textContent = "மொத்த மதிப்பெண்: " + score;
         }
     </script>
+    
 </body>
 </html>
