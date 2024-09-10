@@ -86,6 +86,7 @@ const riddles = [
     }
 ];
 
+const pointGainSound = document.getElementById('point-gain-sound');
 
 let currentRiddleIndex = 0;
 
@@ -119,6 +120,7 @@ function checkAnswer(answer) {
     const correctAnswer = riddles[currentRiddleIndex].answer.toLowerCase();
     if (answer.includes(correctAnswer)) {
         message.textContent = 'பதில் சரியானது! அடுத்த புதிர்.';
+        pointGainSound.play();
         speak('பதில் சரியானது! அடுத்த புதிர்.', () => {
             currentRiddleIndex++;
             if (currentRiddleIndex < riddles.length) {

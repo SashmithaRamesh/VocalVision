@@ -153,6 +153,8 @@ const topics = {
 
 };
 
+const pointGainSound = document.getElementById('point-gain-sound');
+
 let score = 0;
 let currentQuestionIndex = 0;
 let selectedTopic = '';
@@ -235,6 +237,7 @@ function checkAnswer(userAnswer) {
 }
 
 function endGame() {
+    pointGainSound.play();
     const finalScoreMessage = `நீங்கள் பெற்ற மொத்த மதிப்பெண்: ${score} / ${topics[selectedTopic].questions.length}`;
     document.getElementById("score").textContent = finalScoreMessage;
     speakText(finalScoreMessage);

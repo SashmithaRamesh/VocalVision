@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirukkural Reader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>திருக்குறள் வாசிப்பு</h1>
+        <div class="kural-box">
+            <p id="kural"></p>
+        </div>
+        <div class="meaning-box">
+            <p id="meaning"></p>
+        </div>
+        <div class="story-box">
+            <p id="story"></p>
+        </div>
+        <div class="controls">
+            <button onclick="startReading()">Start</button>
+            <button onclick="stopReading()">Stop</button>
+            <button onclick="nextKural()">Next Kural</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+// Sample Data
+const thirukkuralData = [
+    {
+        kural: "அகர முதல எழுத்தெல்லாம் ஆதி பகவன் முதற்றே உலகு.",
+        meaning: "அகரம் என்பது எழுத்துகளுக்கு முதன்மையானது; அந்த வகையில் பிரபஞ்சத்திற்கும் முதன்மையானது பரம்பொருள்.",
+        story: "ஒரு நல்ல அரசன் குற்றவாளிகளை மன்னிக்க வேண்டும் என்பதைக் கூறும் குறள்."
+    },
+    {
+        kural: "கற்க கசடறக் கற்பவை கற்றபின் நிற்க அதற்குத் தக.",
+        meaning: "நீங்கள் கற்றுத்தொடங்கிய பொழுது முற்றிலும் கற்றுக்கொள்ள வேண்டும். கற்றுக்கொண்டபின் அதன்படி வாழ வேண்டும்.",
+        story: "ஒரு சிறுவன் கல்வியின் மகத்துவத்தை உணர்ந்து ஆசிரியரிடம் சென்று கற்றுக் கொண்ட கதை."
+    }
+    // Add more Thirukkural data here
+];
+
+let currentKuralIndex = 0;
+let speechSynthesisUtterance = null;
+
+function startReading() {
+    const kural = thirukkuralData[currentKuralIndex].kural;
+    const meaning = thirukkuralData[currentKuralIndex].meaning;
+    const story = thirukkuralData[currentKuralIndex].story;
+
+    document.getElementById('kural').textContent = kural;
+    document.getElementById('meaning').textContent = meaning;
+    document.getElementById('story').textContent = story;
+
+    speechSynthesisUtterance = new SpeechSynthesisUtterance(${kural}. அதன் பொருள்: ${meaning}. தொடர்புடைய கதை: ${story});
+    speechSynthesisUtterance.lang = 'ta-IN';  // Tamil language code
+    speechSynthesis.speak(speechSynthesisUtterance);
+}
+
+function stopReading() {
+    if (speechSynthesisUtterance) {
+        speechSynthesis.cancel();
+    }
+}
+
+function nextKural() {
+    stopReading();
+    currentKuralIndex = (currentKuralIndex + 1) % thirukkuralData.length;
+    startReading();
+}
