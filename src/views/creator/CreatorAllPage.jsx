@@ -44,12 +44,12 @@ const backgroundImages = [
         title: 'Multiplication Squares',
         description: 'Improve your multiplication skills with this engaging game.'
     },
-    /*{
+    {
         url: 'https://t4.ftcdn.net/jpg/02/32/89/97/360_F_232899739_lnA5KZ1ZqwhXnUB1U570dGHmoGKUUbl6.jpg',
-        route: '/Thirukkural.html',
+        route: '/Thirukkural/Thirukkural.html',
         title: 'Thirukkural Game',
         description: 'Explore the ancient Thirukkural in a fun way.'
-    },*/
+    },
 ];
 
 const CreatorAllPage = () => {
